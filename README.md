@@ -148,7 +148,7 @@ Al iniciar la aplicación por primera vez, se inserta automáticamente un usuari
 ![Editar usuarios](capturas/editar-usuario.png)
 
 ### 📦 Gestión de productos
-![Gestión de productos](capturas/gestion-productos.png)
+![Gestión de productos](capturas/g-productos.png)
 
 ### 📁 Gestión de categorías
 ![Gestión de categorias](capturas/categorias.png)
