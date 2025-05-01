@@ -109,7 +109,7 @@ Al iniciar la aplicación por primera vez, se inserta automáticamente un usuari
 ![Página de inicio](capturas/interfaz.png)
 
 ### 🧺 Página principal de productos
-![Página de productos](capturas/productos.png)
+![Página de producto](capturas/productos.png)
 
 ### 🛒 Carrito de compras
 ![Carrito de compras](capturas/carrito.png)
