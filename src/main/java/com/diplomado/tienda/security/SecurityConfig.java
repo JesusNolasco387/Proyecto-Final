@@ -1,5 +1,6 @@
 package com.diplomado.tienda.security;
 
+import com.diplomado.tienda.security.handler.CustomLogoutSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final CustomLogoutSuccessHandler customLogoutSuccessHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -39,7 +41,7 @@ public class SecurityConfig {
                         // Protegidos por sesión
                         .requestMatchers("/carrito/**", "/pedidoConfirmacion", "/usuario/**", "/direcciones/**").authenticated()
                         .requestMatchers("/admin/**", "/admin/reporte-inventario", "/admin/reporte-inventario/pdf",
-                                "/admin/reporte-productos/excel", "/admin/reporte-ventas/excel").hasAuthority("ROLE_ADMIN")
+                                "/admin/reporte-productos/excel", "/admin/reporte-ventas/excel", "/categorias/**").hasAuthority("ROLE_ADMIN")
 
                         // Otros
                         .anyRequest().authenticated()
@@ -55,6 +57,9 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/login?logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
+                        .logoutSuccessHandler(customLogoutSuccessHandler)
+                        .clearAuthentication(true)
+                        .invalidateHttpSession(true)
                         .permitAll()
                 )
                 // API: stateless

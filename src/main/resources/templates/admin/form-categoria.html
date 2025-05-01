@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Categoría</title>
+
+    <!-- Google Fonts y FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Bootstrap y estilos personalizados -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/formCategoria.css}" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-5 mb-5">
+    <div class="form-categoria-container mx-auto">
+        <h2 class="text-center text-primary mb-4" th:text="${categorias.idCategoria != null} ? 'Editar Categoría' : 'Nueva Categoría'"></h2>
+
+        <form th:action="${categorias.idCategoria != null} ? @{/categorias/actualizar/{id}(id=${categorias.idCategoria})} : @{/categorias/guardar}"
+              th:object="${categorias}" method="post" class="formulario">
+
+        <!-- Nombre -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre de la Categoría</label>
+                <input type="text" id="nombre" th:field="*{nombre}" class="form-control" placeholder="Ej. Electrónicos" required>
+            </div>
+
+            <!-- Descripción -->
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea id="descripcion" th:field="*{descripcion}" class="form-control" rows="3"
+                          placeholder="Describe brevemente la categoría..." required></textarea>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <button type="submit" class="btn btn-agregar">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+                <a th:href="@{/categorias/lista}" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Bootstrap JS -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

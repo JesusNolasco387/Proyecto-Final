@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Categorías</title>
+
+    <!-- Google Fonts y FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Bootstrap y estilos personalizados -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/listaCategorias.css}" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar global -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<!-- Contenedor principal -->
+<div class="container mt-5 mb-5">
+    <div class="gestion-categorias-container mx-auto">
+        <h1 class="text-center text-primary mb-4">Gestión de Categorías</h1>
+
+        <!-- Botón para nueva categoría -->
+        <div class="button-group text-center mb-4">
+            <a th:href="@{/categorias/nueva}" class="btn btn-agregar">
+                <i class="fas fa-plus"></i> Nueva Categoría
+            </a>
+        </div>
+
+        <!-- Tabla de categorías -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped categorias-table">
+                <thead class="table-dark text-center">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="categoria : ${categorias}">
+                    <td th:text="${categoria.idCategoria}"></td>
+                    <td th:text="${categoria.nombre}"></td>
+                    <td th:text="${categoria.descripcion}"></td>
+                    <td class="text-center">
+                        <a th:href="@{/categorias/editar/{id}(id=${categoria.idCategoria})}"
+                           class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <!-- Botón Eliminar con confirmación -->
+                        <a th:href="@{/categorias/eliminar/{id}(id=${categoria.idCategoria})}"
+                           class="btn btn-danger btn-sm ms-2"
+                           onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </a>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(categorias)}">
+                    <td colspan="4" class="text-center text-muted">No hay categorías registradas.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Volver al inicio -->
+        <div class="text-center mt-4">
+            <a th:href="@{/admin/productos}" class="btn btn-volver me-2">
+                <i class="fas fa-box"></i> Productos
+            </a>
+            <a th:href="@{/}" class="btn btn-volver">
+                <i class="fas fa-arrow-left"></i> Inicio
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer global -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Scripts -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

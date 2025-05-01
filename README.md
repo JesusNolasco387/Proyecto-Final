@@ -150,6 +150,13 @@ Al iniciar la aplicación por primera vez, se inserta automáticamente un usuari
 ### 📦 Gestión de productos
 ![Gestión de productos](capturas/gestion-productos.png)
 
+### 📁 Gestión de categorías
+![Gestión de categorias](capturas/categorias.png)
+
+### ✏️ Guardar o editar categorías
+![Guardar categorias](capturas/guardar-categoria.png)
+![Editar categorias](capturas/editar-categoria.png)
+
 ### 🏷️ Agregar producto
 ![Agregar producto](capturas/nuevo-producto.png)
 

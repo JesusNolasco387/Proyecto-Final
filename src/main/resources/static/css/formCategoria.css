@@ -1,6 +1,3 @@
-/* ==============================
-   🌐 Variables y Estilos Base
-============================== */
 :root {
     --color-primario: #6C63FF;
     --color-secundario: #3A0CA3;
@@ -12,16 +9,84 @@
     --fuente-principal: 'Poppins', sans-serif;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     background-color: var(--fondo-claro);
     font-family: var(--fuente-principal), sans-serif;
     color: var(--color-texto);
-    margin: 0;
-    padding: 0;
+}
+
+/* Contenedor */
+.form-categoria-container {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 600px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Etiquetas e Inputs */
+label.form-label {
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+input.form-control,
+textarea.form-control {
+    border: 2px solid var(--color-primario);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--color-acento);
+    box-shadow: 0 0 0 3px rgba(247, 37, 133, 0.15);
+    outline: none;
+}
+
+/* Botones */
+.btn-agregar {
+    background: var(--color-acento);
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-agregar:hover {
+    transform: scale(1.05);
+    opacity: 0.95;
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--color-primario);
+    color: var(--color-primario);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background: var(--color-primario);
+    color: white;
+    transform: scale(1.05);
 }
 
 /* ==============================
@@ -77,83 +142,6 @@ body {
 }
 
 /* ==============================
-   🛒 Gestión de Productos
-============================== */
-.gestion-productos-container {
-    background: white;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-
-.productos-table th {
-    background: var(--color-secundario);
-    color: white;
-    text-align: center;
-}
-
-.productos-table td {
-    vertical-align: middle;
-    text-align: center;
-}
-
-.button-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.button-group .btn {
-    font-weight: bold;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.btn-agregar {
-    background: var(--color-acento);
-    color: white;
-}
-
-.btn-categoria {
-    background: #38BDF8;
-    color: white;
-}
-
-.btn-venta {
-    background: var(--color-secundario);
-    color: white;
-}
-
-.btn-pdf {
-    background: #d63384;
-    color: white;
-}
-
-.btn-success-2 {
-    background: #198754;
-    color: white;
-}
-
-.button-group .btn:hover {
-    transform: scale(1.05);
-    opacity: 0.95;
-}
-
-.back-button {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.back-button .btn {
-    font-weight: 500;
-}
-
-/* ==============================
    ⚓ Footer
 ============================== */
 footer {
@@ -194,43 +182,4 @@ footer a:hover {
 footer hr {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     margin: 20px 0;
-}
-
-/* ==============================
-   📱 Responsividad
-============================== */
-@media (max-width: 992px) {
-    .navbar-nav {
-        gap: 15px;
-    }
-
-    .gestion-productos-container {
-        padding: 25px;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar-brand {
-        font-size: 1.5rem;
-    }
-
-    .button-group {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .productos-table th,
-    .productos-table td {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .gestion-productos-container {
-        padding: 20px;
-    }
-
-    footer h5 {
-        font-size: 1.1rem;
-    }
 }
