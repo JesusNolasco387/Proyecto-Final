@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
 
                         // Públicos
-                        .requestMatchers("/", "/registro", "/api/jwt/login", "/css/**", "/js/**", "/video/**",
+                        .requestMatchers("/", "/api/jwt/register","/registro", "/api/jwt/login", "/css/**", "/js/**", "/video/**",
                                 "/images/**").permitAll()
 
                         // Protegidos por JWT

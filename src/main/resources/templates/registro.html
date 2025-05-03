@@ -53,7 +53,7 @@
 
         const csrfToken = document.getElementById("csrfToken").value;
 
-        fetch("/api/auth/register", {
+        fetch("/api/jwt/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
